@@ -28,7 +28,7 @@ jobs:
         - run: |
               echo '${{secrets.KEY}}' > key
               chmod 400 key
-              ips=$(curl https://bitbucket.org/chaowenguo/server/raw/main/server.json | sed -e s/,/\ /g -e s/[][\"]//g)
+              ips=$(curl https://bitbucket.org/chaowenguo/server/raw/main/ip.json | sed -e s/,/\ /g -e s/[][\"]//g)
               array=($ips)
               ssh -o StrictHostKeyChecking=no -i key ubuntu@${array[3]} 'sudo docker stop $(sudo docker container ls -q)
               sudo docker system prune -af
