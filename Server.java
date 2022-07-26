@@ -7,7 +7,7 @@ public class Server
     
     public static void main(final java.lang.String[] args)
     {
-        final var server = reactor.netty.http.server.HttpServer.create().route(routes -> routes.get("ajax", )).port(80).bindNow();
+        final var server = reactor.netty.http.server.HttpServer.create().route(routes -> routes.get("ajax", Server::ajax)).port(80).bindNow();
         server.onDispose().block();
     }
 }
